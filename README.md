@@ -236,7 +236,7 @@ struct File {
 #### Disk Access
 HQOS没有在内核中添加IDE磁盘驱动程序及相关系统调用,而是将其实现于用户态的文件系统中.文件系统进程使用了EFLAGS中的IOPL位,有权限执行IO指令.
 #### Block Cache
-HQOS借助虚拟地址空间来实现块缓存(不得不夸一下JOS的设计者们,好多巧妙的实现).文件系统的DISKMAP(0x10000000 )至DISKMAP+DISKMAX(0xD0000000)用来缓存磁盘,共3GB空间,故HQOS仅支持3GB以下的磁盘.
+HQOS借助虚拟地址空间来实现块缓存.文件系统的DISKMAP(0x10000000 )至DISKMAP+DISKMAX(0xD0000000)用来缓存磁盘,共3GB空间,故HQOS仅支持3GB以下的磁盘.
 ```c
 // Return the virtual address of this disk block.
 void*
